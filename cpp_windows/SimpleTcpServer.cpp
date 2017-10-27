@@ -10,7 +10,7 @@ void handleConnect(SOCKET& sClient) {
 	int ret = recv(sClient, recvData, sizeof(recvData), 0);
 	if(ret > 0) {
 		recvData[ret] = 0x00;
-		printf(recvData);
+		printf("%s\n", recvData);
 	}
 	const char * sendData = "Hello World!\n";
 	send(sClient, sendData, strlen(sendData), 0);

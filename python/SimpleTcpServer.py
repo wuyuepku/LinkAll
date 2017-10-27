@@ -4,7 +4,7 @@ import socket
 listning_port = 666
 def handleConnect(conn, addr):
     data = conn.recv(1024)
-    print "----receving data, length =", len(data)
+    print "----receving data, length(including \\0) =", len(data)
     print data
     conn.send(bytes("GET http://60.205.187.189 HTTP/1.0\r\n\r\n"))
 
@@ -17,8 +17,6 @@ if True: # or while True:
     print "----listening on port:", listning_port
     conn, addr = web.accept()
     print "----received a connect on", addr
-    # do what you like here
     handleConnect(conn, addr)
-    # end do
     conn.close()
 web.close()
